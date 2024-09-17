@@ -1,21 +1,35 @@
 ---
-title: "Simple document"
-output: html_document
+title: "Data import"
+output: github_document
 ---
 
-I'm an R Markdown document! 
-
-# Section 1
-
-Here's a **code chunk** that samples from 
-a _normal distribution_:
-
 ```{r}
-samp = rnorm(100)
-length(samp)
+library(tidyverse)
+# what we want to use is the readr package -- to import data
 ```
 
-# Section 2
+## Read in some data
+use path to open the data set(be specific)
+there are two ways to open the files.
+* absolute way(from the original folder)
+* relative way(from your current working directory)
+one good way of relative path is that anyone who copies this code and data and set their derectory the same way, the code still work.
 
-I can take the mean of the sample, too!
-The mean is `r mean(samp)`.
+Read in a litters dataset.
+
+```{r}
+litters_df = read.csv("./data/FAS_litters.csv")
+litters_df = janitor::clean_names(litters_df)
+```
+
+## take a look at the data
+
+
+
+
+
+
+
+
+
+
