@@ -44,6 +44,13 @@ skimr::skim(litters_df)
 
 更常用的：View function,打开一个新页面，显示这个data frame的信息
 
+## OPTIONS TO READ csv
+
+```{r}
+litters_df = read.csv("./data/FAS_litters.csv", skip = 10, na = c("",".","999"))
+```
+
+check out `r `?read.csv()` for more information
 
 
 
