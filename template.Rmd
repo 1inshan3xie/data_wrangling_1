@@ -49,7 +49,7 @@ skimr::skim(litters_df)
 ## OPTIONS TO READ csv
 
 ```{r}
-litters_df = read.csv("./data/FAS_litters.csv", skip = 10, na = c("",".","999"))
+litters_df = read_csv("./data/FAS_litters.csv", skip = 10, col_names = FALSE)
 ```
 
 check out `r `?read.csv()` for more information
@@ -74,7 +74,16 @@ pulse_df = read_sas("./data/public_pulse_data.sas7bdat")
 pulse_df
 ```
 
+## Comarison with Base R
 
+what about 'read.csv' ?
+```{r}
+litters_base = read.csv("./data/FAS_litters.csv")
+litters_readr = read_csv("./data/FAS_litters.csv")
+
+litters_base
+litters_readr
+```
 
 
 
