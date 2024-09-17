@@ -43,9 +43,6 @@ skimr::skim(litters_df)
 ```
 
 更常用的：View function,打开一个新页面，显示这个data frame的信息
-```{r}
-
-```
 
 
 
