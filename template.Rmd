@@ -5,6 +5,8 @@ output: github_document
 
 ```{r}
 library(tidyverse)
+library(readxl)
+library(haven)
 # what we want to use is the readr package -- to import data
 ```
 
@@ -52,6 +54,25 @@ litters_df = read.csv("./data/FAS_litters.csv", skip = 10, na = c("",".","999"))
 
 check out `r `?read.csv()` for more information
 
+## Other file format
+
+Read in an excel file
+
+```{r}
+mlb_df = read_excel("./data/mlb11.xlsx")
+mlb_df
+
+# try the read range
+mlb_df_2 = read_excel("./data/mlb11.xlsx", range = "A1:F7")
+mlb_df_2
+```
+
+Read in a sas file
+
+```{r}
+pulse_df = read_sas("./data/public_pulse_data.sas7bdat")
+pulse_df
+```
 
 
 
