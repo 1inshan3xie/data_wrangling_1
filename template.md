@@ -449,3 +449,11 @@ litters_readr
     ## # ℹ 39 more rows
     ## # ℹ 3 more variables: `Pups born alive` <dbl>, `Pups dead @ birth` <dbl>,
     ## #   `Pups survive` <dbl>
+
+## exporting data
+
+export the mlb sub-table
+
+``` r
+write_csv(mlb_df_2, "./data/mlb_subtable.csv")
+```
