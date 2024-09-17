@@ -24,6 +24,30 @@ litters_df = janitor::clean_names(litters_df)
 
 ## take a look at the data
 
+Printing in tge console
+```{r}
+litters_df
+```
+
+```{r}
+#看前6行
+head(litters_df)
+#看后6行
+tail(litters_df)
+```
+
+```{r}
+#用a：：b可以跳过library的过程直接加载这个包里的这个package
+#可以查看这个data frame里有多少rows、columns，有什么类型的数据，以及各类型数据的名称和总结
+skimr::skim(litters_df)
+```
+
+更常用的：View function,打开一个新页面，显示这个data frame的信息
+```{r}
+
+```
+
+
 
 
 
