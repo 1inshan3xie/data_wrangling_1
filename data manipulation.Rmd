@@ -9,7 +9,7 @@ library(tidyverse)
 
 ## Load in the FAS litters DATA
 ```{r}
-litters_df = read_csv("./data/FAS_litters.csv")
+litters_df = read_csv("./data/FAS_litters.csv",na = c("NA", ".", ""))
 litters_df = janitor::clean_names(litters_df)
 ```
 
@@ -101,6 +101,7 @@ filter(litters_df, group %in% c("Mod8","Con7"))
 ```{r}
 mutate(
   litters_df, 
+  wt_gain = gd18_weight - gd0_weight,
   group = str_to_lower(group))
 #可以创造一个新的变量wt_gain = gd18_weight - gd0_weight，还可以进行计算
 ```
@@ -115,7 +116,26 @@ arrange(litters_df,pups_born_alive)
 arrange(litters_df,pups_born_alive,gd0_weight)
 ```
 
+## `/>`
 
+```{r}
+litters_df_raw = read_csv("./data/FAS_litters.csv", na = c("NA", ".", ""))
+litters_df_clean_names = janitor::clean_names(litters_df_raw)
+litters_df_selected_cols = select(litters_df_clean_names, -pups_survive)
+litters_mutated = mutate(litters_df_selected_cols, wt_gain = gd18_weight - gd0_weight, group = str_to_lower(group))
+litters_df_with_vars_without_missing = 
+  drop_na(litters_mutated, wt_gain)
+```
+
+if you use the pipes!
+```{r}
+litters_df = 
+  read_csv("./data/FAS_litters.csv", na = c("NA", ".", "")) |>
+  janitor::clean_names() |> select(-pups_survive) |>
+  mutate(wt_gain = gd18_weight - gd0_weight,
+    group = str_to_lower(group)) |>
+  drop_na(wt_gain)
+```
 
 
 
