@@ -93,8 +93,3 @@ write_csv(mlb_df_2, "./data/mlb_subtable.csv")
 ```
 
 
-
-
-
-
-

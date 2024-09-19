@@ -1,0 +1,95 @@
+---
+title: "Data import"
+output: github_document
+---
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(haven)
+# what we want to use is the readr package -- to import data
+```
+
+## Read in some data
+use path to open the data set(be specific)
+there are two ways to open the files.
+* absolute way(from the original folder)
+* relative way(from your current working directory)
+one good way of relative path is that anyone who copies this code and data and set their derectory the same way, the code still work.
+
+Read in a litters dataset.
+
+```{r}
+litters_df = read.csv("./data/FAS_litters.csv")
+litters_df = janitor::clean_names(litters_df)
+```
+
+## take a look at the data
+
+Printing in tge console
+```{r}
+litters_df
+```
+
+```{r}
+#看前6行
+head(litters_df)
+#看后6行
+tail(litters_df)
+```
+
+```{r}
+#用a：：b可以跳过library的过程直接加载这个包里的这个package
+#可以查看这个data frame里有多少rows、columns，有什么类型的数据，以及各类型数据的名称和总结
+skimr::skim(litters_df)
+```
+
+更常用的：View function,打开一个新页面，显示这个data frame的信息
+
+## OPTIONS TO READ csv
+
+```{r}
+litters_df = read_csv("./data/FAS_litters.csv", skip = 10, col_names = FALSE)
+```
+
+check out `r `?read.csv()` for more information
+
+## Other file format
+
+Read in an excel file
+
+```{r}
+mlb_df = read_excel("./data/mlb11.xlsx")
+mlb_df
+
+# try the read range
+mlb_df_2 = read_excel("./data/mlb11.xlsx", range = "A1:F7")
+mlb_df_2
+```
+
+Read in a sas file
+
+```{r}
+pulse_df = read_sas("./data/public_pulse_data.sas7bdat")
+pulse_df
+```
+
+## Comarison with Base R
+
+what about 'read.csv' ?
+```{r}
+litters_base = read.csv("./data/FAS_litters.csv")
+litters_readr = read_csv("./data/FAS_litters.csv")
+
+litters_base
+litters_readr
+```
+
+## exporting data
+
+export the mlb sub-table
+```{r}
+write_csv(mlb_df_2, "./data/mlb_subtable.csv")
+```
+
+
