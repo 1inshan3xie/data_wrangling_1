@@ -105,6 +105,15 @@ mutate(
 #可以创造一个新的变量wt_gain = gd18_weight - gd0_weight，还可以进行计算
 ```
 
+## `arrange`
+
+```{r}
+arrange(litters_df,pups_born_alive)
+```
+
+```{r}
+arrange(litters_df,pups_born_alive,gd0_weight)
+```
 
 
 
