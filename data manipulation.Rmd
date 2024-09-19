@@ -13,3 +13,66 @@ litters_df = read_csv("./data/FAS_litters.csv")
 litters_df = janitor::clean_names(litters_df)
 ```
 
+## `select`
+
+Choose some columns and not others
+```{r}
+select(litters_df, group,litter_number,gd0_weight)
+```
+
+```{r}
+select(litters_df,group,gd0_weight:gd_of_birth)
+# a:b意味着选择从a到b的所有列
+```
+
+```{r}
+select(litters_df,-litter_number)
+#除了那个变量都留下来
+```
+
+Renaming columns...
+```{r}
+select(litters_df, GROUP = group, LiTtEr_NuMbEr = litter_number)
+#rename的同时把这两列挑选出来
+```
+
+```{r}
+rename(litters_df, GROUP = group, LiTtEr_NuMbEr = litter_number)
+#rename的时候保留整个表格
+```
+
+Select helpers
+```{r}
+select(litters_df,starts_with("gd"))
+#筛选出以gd开头的变量
+```
+
+Relocate
+```{r}
+select(litters_df, litter_number, everything())
+#把litternumkber放到第一个，其他的保留
+```
+
+```{r}
+relocate(litters_df, litter_number)
+# 达成同上的效果
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
